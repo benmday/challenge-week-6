@@ -5,12 +5,20 @@ header {
     height: 75px;
 }
 
+main {
+    display: inline-block;
+}
+
+.results {
+    width: 70%;
+}
+
 .search {
     border-color: gray;
     border-width: 5px;
     display: inline-block;
     height: 100%;
-    width: 15%;
+    width: 100%;
 }
 
 .search h2 {
