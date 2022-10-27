@@ -1,5 +1,5 @@
 header {
-    background: linear-gradient(to right, rgb(0, 0, 165), rgb(116, 186, 252));
+    background: linear-gradient(to right, rgb(0, 0, 53), rgb(0, 132, 255));
     color: white;
     text-align: center;
     height: 75px;
@@ -9,24 +9,23 @@ main {
     display: flex;
 }
 
-.results {
+#print-weather {
+    padding: 10px;
     width: 100%;
-    border-width: 2px;
-    border-color: gray;
-    margin: 5px;
 }
 
 .search {
-    border-color: gray;
-    border-width: 5px;
-    display: inline-block;
+    border: 2px solid gray;
+    border-radius: 10px;
     height: 100%;
     width: 25%;
-    margin: 20px;
+    margin: 1.4%;
+    padding: 10px;
 }
 
 .search h2 {
     font-size: 20pt;
+    margin-bottom: 30px;
 }
 
 .search-box {
@@ -35,22 +34,50 @@ main {
 
 .city-button {
     width: 100%;
+    border-radius: 5px;
+    border-color: rgb(206, 206, 206);
+    margin: 5px 0
 }
 
 #search-button {
     width: 100%;
-}
-
-#print-weather {
-    margin: 20px;
-}
-
-.form {
-    width: 100%;
+    margin: 10px 0;
 }
 
 #weather-img {
     background-color: rgb(0, 0, 94);
     height: 50px;
     border-radius: 10px;
+}
+
+#card-1 {
+    border: 2px solid rgb(138, 189, 255);
+    border-radius: 10px; 
+    width: 98%;
+    padding: 20px;
+    margin: 1%;
+    background-color: rgb(138, 189, 255);
+}
+
+#card-1 img {
+    height: 80px;
+    margin: 10px 10px 10px 0;
+}
+
+#card-1 h5 {
+    font-size: 2.5vmax;
+}
+
+#card-2 h5, #card-3 h5, #card-4 h5, #card-5 h5 {
+    font-size: 1.75vmax;
+}
+
+#card-2, #card-3, #card-4, #card-5 {
+    display: inline-block;
+    border: 2px solid rgb(176, 210, 255);
+    border-radius: 10px;
+    width: 23%;
+    margin: 1%;
+    padding: 20px;
+    background-color: rgb(176, 210, 255);
 }
