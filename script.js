@@ -3,12 +3,12 @@ var APIkey = "be09ec00708d3598594b8a670c27e1d8";
 var searchInput = $(".search-box").val();
 var searchHistory = $(".search");
 
-$('#print-weather').hide();
+$("#print-weather").hide();
 
 function weatherSearch() {
   const searchInput = $(".search-box").val();
 
-  const cityConvert = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=5&appid=${APIkey}`;
+  const cityConvert = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=5&appid=${APIkey}`;
 
   fetch(cityConvert)
     .then((response) => {
@@ -25,7 +25,6 @@ function weatherSearch() {
           return response.json();
         })
         .then((data) => {
-
           for (i = 0; i < 5; i++) {
             const dataList = data.list[i];
             var date = dataList.dt;
@@ -39,7 +38,7 @@ function weatherSearch() {
 
             var weatherData = `<div class=results id=card-${i + 1}>
                                         <h5>${convertedDate.toLocaleDateString()}</h5>
-                                        <img src="http://openweathermap.org/img/wn/${icon}@2x.png" id="weather-img">
+                                        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" id="weather-img">
                                         <p><strong>Temp: </strong>${temp}°</p>
                                         <p><strong>Wind: </strong>${wind}/mph</p>
                                         <p><strong>Humidity: </strong>${hum}%</p> 
@@ -52,7 +51,6 @@ function weatherSearch() {
           $("#card-1").prepend(cityName);
 
           localStorage.setItem(searchInput, JSON.stringify(weatherData));
-
         });
     });
 }
@@ -64,11 +62,11 @@ searchButton.click(search);
 function search(e) {
   e.preventDefault();
 
-  $('#card-1').remove();
-  $('#card-2').remove();
-  $('#card-3').remove();
-  $('#card-4').remove();
-  $('#card-5').remove();
+  $("#card-1").remove();
+  $("#card-2").remove();
+  $("#card-3").remove();
+  $("#card-4").remove();
+  $("#card-5").remove();
 
   var searchInput = $(".search-box").val();
   var cityButton = $("<button>");
@@ -77,11 +75,14 @@ function search(e) {
     return window.alert("Please enter a city name");
   }
 
-  $('#print-weather').show();
+  $("#print-weather").show();
 
   weatherSearch();
 
-  cityButton.text(searchInput).addClass("city-button").attr("id", $(".search-box").val());
+  cityButton
+    .text(searchInput)
+    .addClass("city-button")
+    .attr("id", $(".search-box").val());
   searchHistory.append(cityButton);
 
   $(".search-box").val("");
@@ -89,23 +90,22 @@ function search(e) {
   var cityButtonID = $(document.getElementById(searchInput));
 
   cityButtonID.click(loadData);
-  
+
   function loadData(e) {
-        e.preventDefault();
+    e.preventDefault();
 
-        var weatherResults = $("#print-weather");
+    var weatherResults = $("#print-weather");
 
-        $('#card-1').remove();
-        $('#card-2').remove();
-        $('#card-3').remove();
-        $('#card-4').remove();
-        $('#card-5').remove();
-  
-      var cityInfo = JSON.parse(localStorage.getItem(searchInput))
+    $("#card-1").remove();
+    $("#card-2").remove();
+    $("#card-3").remove();
+    $("#card-4").remove();
+    $("#card-5").remove();
 
-      console.log(cityInfo);
+    var cityInfo = JSON.parse(localStorage.getItem(searchInput));
 
-      weatherResults.append(cityInfo);
+    console.log(cityInfo);
+
+    weatherResults.append(cityInfo);
   }
 }
-
