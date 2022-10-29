@@ -3,7 +3,7 @@ var APIkey = "be09ec00708d3598594b8a670c27e1d8";
 var searchInput = $(".search-box").val();
 var searchHistory = $(".search");
 
-$("#print-weather").hide();
+$('#print-weather').hide();
 
 function weatherSearch() {
   const searchInput = $(".search-box").val();
@@ -25,6 +25,7 @@ function weatherSearch() {
           return response.json();
         })
         .then((data) => {
+
           for (i = 0; i < 5; i++) {
             const dataList = data.list[i];
             var date = dataList.dt;
@@ -51,6 +52,7 @@ function weatherSearch() {
           $("#card-1").prepend(cityName);
 
           localStorage.setItem(searchInput, JSON.stringify(weatherData));
+
         });
     });
 }
@@ -62,11 +64,11 @@ searchButton.click(search);
 function search(e) {
   e.preventDefault();
 
-  $("#card-1").remove();
-  $("#card-2").remove();
-  $("#card-3").remove();
-  $("#card-4").remove();
-  $("#card-5").remove();
+  $('#card-1').remove();
+  $('#card-2').remove();
+  $('#card-3').remove();
+  $('#card-4').remove();
+  $('#card-5').remove();
 
   var searchInput = $(".search-box").val();
   var cityButton = $("<button>");
@@ -75,39 +77,35 @@ function search(e) {
     return window.alert("Please enter a city name");
   }
 
-  $("#print-weather").show();
+  $('#print-weather').show();
 
   weatherSearch();
 
-  cityButton
-    .text(searchInput)
-    .addClass("city-button")
-    .attr("id", $(".search-box").val());
+  cityButton.text(searchInput).addClass("city-button").attr("id", $(".search-box").val());
   searchHistory.append(cityButton);
-
-  console.log(cityButtonID);
 
   $(".search-box").val("");
 
   var cityButtonID = $(document.getElementById(searchInput));
 
   cityButtonID.click(loadData);
-
+  
   function loadData(e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    var weatherResults = $("#print-weather");
+        var weatherResults = $("#print-weather");
 
-    $("#card-1").remove();
-    $("#card-2").remove();
-    $("#card-3").remove();
-    $("#card-4").remove();
-    $("#card-5").remove();
+        $('#card-1').remove();
+        $('#card-2').remove();
+        $('#card-3').remove();
+        $('#card-4').remove();
+        $('#card-5').remove();
+  
+      var cityInfo = JSON.parse(localStorage.getItem(searchInput))
 
-    var cityInfo = JSON.parse(localStorage.getItem(searchInput));
+      console.log(cityInfo);
 
-    console.log(cityInfo);
-
-    weatherResults.append(cityInfo);
+      weatherResults.append(cityInfo);
   }
 }
+
